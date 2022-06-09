@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "710541163932",
+    "project_id": "eshop-87839",
+    "storage_bucket": "eshop-87839.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710541163932:android:a3fd67594d3ddf42d71c59",
+        "android_client_info": {
+          "package_name": "com.ojaswi.ecommerceshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710541163932-re25f1s67chaarbblocrmv3u9kors3c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ4VDndUfqLLb7IAedIXQNJOJ_abpMNyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710541163932-re25f1s67chaarbblocrmv3u9kors3c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
