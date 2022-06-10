@@ -17,56 +17,51 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'Widgets/theme_provider.dart';
 
-
-
-Future<void> main() async
-{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
- await Firebase.initializeApp();
-  EcommerceApp.auth =FirebaseAuth.instance;
-  EcommerceApp.sharedPreferences=await SharedPreferences.getInstance();
-  EcommerceApp.firestore= FirebaseFirestore.instance;
+  await Firebase.initializeApp();
+  EcommerceApp.auth = FirebaseAuth.instance;
+  EcommerceApp.sharedPreferences = await SharedPreferences.getInstance();
+  EcommerceApp.firestore = FirebaseFirestore.instance;
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   static const String title = 'Light & Dark Theme';
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider
-    (providers:[
-      ChangeNotifierProvider
-        (create: (c) => CartItemCounter(),
-    ),
-    ChangeNotifierProvider(
-    create: (c) => ItemQuantity(),
-    ),
-    ChangeNotifierProvider(
-    create: (c) => AddressChanger(),
-    ),
-    ChangeNotifierProvider(
-    create: (c) => TotalAmount(),
-    ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (c) => CartItemCounter(),
+        ),
+        ChangeNotifierProvider(
+          create: (c) => ItemQuantity(),
+        ),
+        ChangeNotifierProvider(
+          create: (c) => AddressChanger(),
+        ),
+        ChangeNotifierProvider(
+          create: (c) => TotalAmount(),
+        ),
       ],
-
-   child: MaterialApp(
-    title: 'e-Shop',//features & properties
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-    primaryColor: Colors.pinkAccent,
-    ),
-    home: SplashScreen(),
-    ),
+      child: MaterialApp(
+        title: 'e-Shop', //features & properties
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.pinkAccent,
+        ),
+        home: SplashScreen(),
+      ),
     );
+  }
 }
-}
+
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
-
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
@@ -80,8 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (await EcommerceApp.auth.currentUser != null) {
         Route route = MaterialPageRoute(builder: (_) => StoreHome());
         Navigator.pushReplacement(context, route);
-      }
-      else {
+      } else {
         Route route = MaterialPageRoute(builder: (_) => AuthenticScreen());
         Navigator.pushReplacement(context, route);
       }
@@ -106,7 +100,9 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/welcome.png"),
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               Text(
                 "Beauty is whatever gives you joy",
                 style: TextStyle(color: Color.fromARGB(255, 220, 70, 120)),
@@ -118,4 +114,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-

@@ -1,3 +1,4 @@
+import 'package:e_shop/Address/addAddress.dart';
 import 'package:e_shop/Widgets/customAppBar.dart';
 import 'package:e_shop/Widgets/myDrawer.dart';
 import 'package:e_shop/Models/item.dart';
@@ -22,10 +23,11 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   int quantityOfItems = 1;
-  final formKey = GlobalKey<FormState>();
+  final rateKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final cUserId = TextEditingController();
   final cRating = TextEditingController();
+  final cComment = TextEditingController();
 
 
   @override
@@ -119,27 +121,43 @@ class _ProductPageState extends State<ProductPage> {
                       },
                       onRatingUpdate: (rating) {
                         //creating a firestore and updating it
-
+                        if(rateKey.currentState.validate()) {
                           final model = RatingModel(
-                            userid:  EcommerceApp.sharedPreferences.getString(EcommerceApp.userUID),
-                            rating: rating.toString(),
-                            productId: EcommerceApp.sharedPreferences.getString(EcommerceApp.productID)
+                              userid: EcommerceApp.sharedPreferences.getString(
+                                  EcommerceApp.userUID),
+                              rating: rating.toString(),
+                              productId: EcommerceApp.sharedPreferences
+                                  .getString(EcommerceApp.productID),
+                            comment: cComment.text
 
                           ).toJson();
 
                           //add to firestore
                           print(EcommerceApp.productID.toString());
-                          EcommerceApp.firestore.collection('items')
-                              .doc(EcommerceApp.sharedPreferences.getString(EcommerceApp.productID))
+                          EcommerceApp.firestore.collection('rating')
+                              .doc(EcommerceApp.sharedPreferences.getString(
+                              EcommerceApp.productID))
                               .set(model)
-                              .then((value){
+                              .then((value) {
 
                           });
-
-
+                        }
 
                       },
                     ),
+                        Card(
+                          child: Form(
+                            key: rateKey,
+                            child: Column(
+                              children: [
+                                MyCommentField(
+                                  hint: "Rate",
+                                  controller: cComment,
+                                )
+                              ],
+                            )
+                          ) ,
+                        )
                       ],
                     ),
                   ),
@@ -176,6 +194,26 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MyCommentField extends StatelessWidget
+{
+  final String hint;
+  final TextEditingController controller;
+
+  MyCommentField({Key key, this.hint, this.controller,}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration.collapsed(hintText: hint),
+        validator: (val) => val.isEmpty ? "Field can not be empty." : null,
       ),
     );
   }

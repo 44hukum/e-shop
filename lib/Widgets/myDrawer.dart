@@ -1,6 +1,8 @@
 import 'package:e_shop/Authentication/authenication.dart';
 import 'package:e_shop/Config/config.dart';
 import 'package:e_shop/Address/addAddress.dart';
+import 'package:e_shop/Profile/profile_update.dart';
+import 'package:e_shop/Profile/update_profile.dart';
 import 'package:e_shop/Store/Search.dart';
 import 'package:e_shop/Store/cart.dart';
 import 'package:e_shop/Orders/myOrders.dart';
@@ -82,6 +84,26 @@ class MyDrawer extends StatelessWidget {
                     Route route =
                         MaterialPageRoute(builder: (c) => StoreHome());
                     Navigator.pushReplacement(context, route);
+                  },
+                ),
+                Divider(
+                  height: 10.0,
+                  color: Colors.white,
+                  thickness: 6.0,
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.update,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "updateProfile",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onTap: () {
+                    Route route =
+                    MaterialPageRoute(builder: (c) => ProfileUpdate());
+                    Navigator.push(context, route);
                   },
                 ),
                 Divider(

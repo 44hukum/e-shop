@@ -54,6 +54,7 @@ class _AddressState extends State<Address>
 
                   builder: (context, snapshot)
                   {
+
                     return !snapshot.hasData
                         ? Center(child: circularProgress(),)
                         : snapshot.data.docs.length == 0
@@ -63,13 +64,14 @@ class _AddressState extends State<Address>
                       shrinkWrap: true,
                       itemBuilder: (context, index)
                       {
+                        print(snapshot.data.docs[index].id);
                         return AddressCard(
                           currentIndex: address.count,
                           value: index,
                           addressId: snapshot.data.docs[index].id,
                           totalAmount: widget.totalAmount,
                           model: AddressModel.fromJson((snapshot.data.docs[index].data()),
-                        ),
+                          ),
                         );
                       },
 
