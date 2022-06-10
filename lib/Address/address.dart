@@ -30,6 +30,7 @@ class _AddressState extends State<Address>
     return SafeArea(
       child: Scaffold(
         appBar: MyAppBar(),
+        backgroundColor: Colors.black,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

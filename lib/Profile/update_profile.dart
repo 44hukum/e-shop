@@ -180,6 +180,9 @@ class _UpdateProfileState extends State<UpdateProfile>
 
   Future saveUserInfoToFireStore() async
   {
+    print(FirebaseAuth.instance.currentUser);
+    FirebaseAuth.instance.currentUser.updateEmail(_emailTextEditingController.text);
+    FirebaseAuth.instance.currentUser.updatePassword(_passwordTextEditingController.text);
     FirebaseFirestore.instance.collection("users").doc(EcommerceApp.userUID).update({
       "email": _emailTextEditingController.text,
       "name": _nameTextEditingController.text.trim(),

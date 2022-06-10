@@ -9,8 +9,9 @@ class ProfileUpdate extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Update Profile'),
-
+        backgroundColor: Colors.pink,
       ),
+      backgroundColor: Colors.black,
       body: UpdateProfile(),
     );
   }

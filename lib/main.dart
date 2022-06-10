@@ -64,6 +64,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
   void initState() {
     super.initState();
@@ -85,6 +86,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
+
       child: Container(
         decoration: new BoxDecoration(
           gradient: new LinearGradient(
@@ -95,6 +97,7 @@ class _SplashScreenState extends State<SplashScreen> {
             tileMode: TileMode.clamp,
           ),
         ),
+
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

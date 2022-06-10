@@ -102,6 +102,7 @@ class _StoreHomeState extends State<StoreHome> {
           ],
         ),
         drawer: MyDrawer(),
+        backgroundColor: Colors.black,
         body: CustomScrollView(
           slivers: [
             SliverPersistentHeader(pinned: true, delegate: SearchBoxDelegate()),

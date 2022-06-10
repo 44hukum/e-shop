@@ -53,6 +53,7 @@ class _CartPageState extends State<CartPage>
         icon: Icon(Icons.navigate_next),
       ),
       appBar: MyAppBar(),
+      backgroundColor: Colors.black,
       drawer: MyDrawer(),
       body: CustomScrollView(
         slivers: [

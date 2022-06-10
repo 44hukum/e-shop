@@ -17,8 +17,6 @@ class theme extends StatelessWidget {
       .themeMode == ThemeMode.dark
       ? 'DarkTheme'
       : 'LightTheme';
-
-
     return Scaffold(
     appBar: AppBar(
       backgroundColor: Colors.orange,

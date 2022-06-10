@@ -36,6 +36,7 @@ class _ProductPageState extends State<ProductPage> {
       child: Scaffold(
         appBar: MyAppBar(),
         drawer: MyDrawer(),
+        backgroundColor: Colors.black,
         body: ListView(
           children: [
             Container(

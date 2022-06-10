@@ -27,6 +27,7 @@ class _SearchProductState extends State<SearchProduct>
     return SafeArea(
       child: Scaffold(
         appBar: MyAppBar(bottom: PreferredSize(child: searchWidget(), preferredSize: Size(56.0, 56.0)),),
+        backgroundColor: Colors.black,
         body: FutureBuilder<QuerySnapshot>(
           future: docList,
           builder: (context, snap)
